@@ -6,5 +6,5 @@ export abstract class Person {
     name!:string
     username!:string
     password!:string
-    role!:Role
+    role!:Role | undefined
 }
