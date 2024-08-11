@@ -1,1 +1,16 @@
 <p>equipment-form works!</p>
+
+<!-- src/app/components/equipment-form/equipment-form.component.html -->
+<h2>{{ equipmentId ? 'Éditer l\'Équipement' : 'Créer un Équipement' }}</h2>
+<form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nome">Nom :</label>
+    <input id="nome" formControlName="nome" />
+    <div *ngIf="equipmentForm.get('nome')?.invalid && equipmentForm.get('nome')?.touched">
+      <small *ngIf="equipmentForm.get('nome')?.errors">Le nom est requis.</small>
+    </div>
+  </div>
+  <button type="submit">{{ equipmentId ? 'Mettre à jour' : 'Créer' }}</button>
+  <button type="button" (click)="onCancel()">Annuler</button>
+</form>
+
