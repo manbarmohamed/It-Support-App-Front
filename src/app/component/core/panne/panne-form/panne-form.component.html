@@ -1,0 +1,15 @@
+<p>panne-form works!</p>
+
+<!-- src/app/components/panne-form/panne-form.component.html -->
+<h2>{{ panneId ? 'Éditer la Panne' : 'Créer une Panne' }}</h2>
+<form [formGroup]="panneForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nom">Nom :</label>
+    <input id="nom" formControlName="nom" />
+    <div *ngIf="panneForm.get('nom')?.invalid && panneForm.get('nom')?.touched">
+      <small *ngIf="panneForm.get('nom')?.errors">Le nom est requis.</small>
+    </div>
+  </div>
+  <button type="submit">{{ panneId ? 'Mettre à jour' : 'Créer' }}</button>
+  <button type="button" (click)="onCancel()">Annuler</button>
+</form>

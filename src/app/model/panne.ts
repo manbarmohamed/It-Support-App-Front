@@ -4,7 +4,7 @@ import { Ticket } from "./ticket"
 export class Panne {
 
     id!:number
-    name!:string
+    nom!:string
     tickets!:Ticket[]
     historiques!: PanneEquipement
 }

@@ -6,7 +6,7 @@ import { User } from "./user"
 export class Equipement {
 
     id!:number
-    name!:string
+    nome!:string
     status!:EquipementStatus
     user!:User
     tickets!:Ticket[]

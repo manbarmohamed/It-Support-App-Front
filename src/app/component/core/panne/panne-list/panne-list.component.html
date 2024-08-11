@@ -1,0 +1,21 @@
+<!-- src/app/components/panne-list/panne-list.component.html -->
+<h2>Liste des Pannes</h2>
+<button (click)="createPanne()">Créer Nouvelle Panne</button>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let panne of pannes">
+      <td>{{ panne.id }}</td>
+      <td>{{ panne.nom }}</td>
+      <td>
+        <button (click)="editPanne(panne.id)">Éditer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

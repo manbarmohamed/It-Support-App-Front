@@ -2,9 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { EquipementServiceService } from '../../../service/equipement-service.service';
+import { EquipementServiceService } from '../../../../service/equipement-service.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { User } from '../../../model/user';
+import { User } from '../../../../model/user';
 
 @Component({
   selector: 'app-assign-equipment',

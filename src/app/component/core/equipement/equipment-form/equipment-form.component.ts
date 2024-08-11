@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EquipementServiceService } from '../../../service/equipement-service.service';
+import { EquipementServiceService } from '../../../../service/equipement-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { EquipementDto } from '../../../dto/equipement-dto';
+import { EquipementDto } from '../../../../dto/equipement-dto';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -39,7 +39,7 @@ export class EquipmentFormComponent implements OnInit {
   loadEquipment(id: number): void {
     this.equipmentService.getEquipmentById(id).subscribe((equipment) => {
       this.equipmentForm.patchValue({
-        nome: equipment.name,
+        nome: equipment.nome,
       });
     });
   }

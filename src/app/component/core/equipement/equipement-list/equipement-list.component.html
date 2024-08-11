@@ -13,7 +13,7 @@
   <tbody>
     <tr *ngFor="let equipment of equipments">
       <td>{{ equipment.id }}</td>
-      <td>{{ equipment.name }}</td>
+      <td>{{ equipment.nome }}</td>
       <td>{{ equipment.status }}</td>
       <td>
         <button (click)="editEquipment(equipment.id)">Modifier</button>

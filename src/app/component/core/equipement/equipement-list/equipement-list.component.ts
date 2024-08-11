@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { EquipementDto } from '../../../dto/equipement-dto';
-import { EquipementServiceService } from '../../../service/equipement-service.service';
+import { EquipementDto } from '../../../../dto/equipement-dto';
+import { EquipementServiceService } from '../../../../service/equipement-service.service';
 import { Router } from '@angular/router';
 import { NgFor } from '@angular/common';
-import { Equipement } from '../../../model/equipement';
+import { Equipement } from '../../../../model/equipement';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,6 +23,8 @@ export class EquipementListComponent {
   ngOnInit(): void {
     this.equipmentService.getAllEquipments().subscribe((data) => {
       this.equipments = data;
+      console.log(this.equipments);
+      
     });
   }
     
