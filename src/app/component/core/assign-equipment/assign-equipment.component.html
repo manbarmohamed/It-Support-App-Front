@@ -1,0 +1,23 @@
+<!-- src/app/components/assign-equipment/assign-equipment.component.html -->
+<h2>Assigner un Équipement à un Utilisateur</h2>
+<form [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="equipmentId">ID Équipement :</label>
+    <input id="equipmentId" formControlName="equipmentId" type="number" (change)="onEquipmentIdChange($event)" />
+    <div *ngIf="assignForm.get('equipmentId')?.invalid && assignForm.get('equipmentId')?.touched">
+      <small *ngIf="assignForm.get('equipmentId')?.errors">ID Équipement requis.</small>
+      <small *ngIf="assignForm.get('equipmentId')?.errors">ID Équipement doit être un nombre positif.</small>
+    </div>
+  </div>
+  <div>
+    <label for="userId">Utilisateur :</label>
+    <select id="userId" formControlName="userId">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+    </select>
+    <div *ngIf="assignForm.get('userId')?.invalid && assignForm.get('userId')?.touched">
+      <small *ngIf="assignForm.get('userId')?.errors">Utilisateur requis.</small>
+    </div>
+  </div>
+  <button type="submit">Assigner</button>
+  <!-- <button type="button" (click)="router.navigate(['/equipment'])">Annuler</button> -->
+</form>

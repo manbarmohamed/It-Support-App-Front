@@ -1,0 +1,29 @@
+<!-- src/app/components/equipment-list/equipment-list.component.html -->
+<h2>Liste des Équipements</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Status</th>
+      <th>Actions</th>
+      <th>Assigner à un Utilisateur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let equipment of equipments">
+      <td>{{ equipment.id }}</td>
+      <td>{{ equipment.name }}</td>
+      <td>{{ equipment.status }}</td>
+      <td>
+        <button (click)="editEquipment(equipment.id)">Modifier</button>
+        <button (click)="deleteEquipment(equipment.id)">Supprimer</button>
+      </td>
+      <td>
+        <input #userIdInput type="number" placeholder="ID Utilisateur" />
+        <button (click)="assignEquipmentToUser(equipment.id, userIdInput.value)">Assigner</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="addEquipment()">Ajouter un Équipement</button>
