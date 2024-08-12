@@ -1,0 +1,21 @@
+<p>ticket-form works!</p>
+
+
+<h2>Create a New Ticket</h2>
+<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" required />
+  </div>
+  <div>
+    <label for="panne_id">Panne ID:</label>
+    <input id="panne_id" formControlName="panne_id" required />
+  </div>
+  <div>
+    <label for="equipement_id">Equipement ID:</label>
+    <input id="equipement_id" formControlName="equipement_id" required />
+  </div>
+  <button type="submit">Save Ticket</button>
+</form>
+
+

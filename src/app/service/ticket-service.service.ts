@@ -1,42 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Ticket } from '../model/ticket';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { TicketDto } from '../dto/ticket-dto';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Technicien } from '../model/technicien';
+import { SaveTicketDto } from '../dto/save-ticket-dto';
+import { TicketDto } from '../dto/ticket-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketServiceService {
 
-  private baseUrl = 'http://localhost:8000';
+  private apiUrl = 'http://localhost:8000'; // Replace with your backend URL
 
   constructor(private http: HttpClient) {}
 
-  createTicket(ticket: TicketDto, equipementId: number, panneId: number): Observable<TicketDto> {
-    return this.http.post<TicketDto>(`${this.baseUrl}/user/saveTicket`, {
-      ticket,
-      equipementId,
-      panneId,
-    });
+  getAllTickets(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/user/allTicket`);
   }
-  getTicketsByUser(userId: number): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(`${this.baseUrl}/user/ticketByUser/${userId}`);
+
+  getTicketsByUserId(userId: number): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/user/ticketByUserId/${userId}`);
   }
-  getTicketsByTechnician(technicianId: number): Observable<TicketDto[]> {
-    return this.http.get<TicketDto[]>(`${this.baseUrl}/tech/ticketByTechnician/${technicianId}`);
+
+  assignTicketToTechnician(ticketId: number, technicianId: number): Observable<Ticket> {
+    return this.http.post<Ticket>(`${this.apiUrl}/admin/assignTicketToTech/${ticketId}/${technicianId}`, {});
   }
-  assignTicketToTechnician(ticketId: number, technicianId: number): Observable<TicketDto> {
-    return this.http.post<TicketDto>(`${this.baseUrl}/admin/assignTicketToTech/${ticketId}/${technicianId}`, {});
-  }
+
   resolveTicket(ticketId: number): Observable<TicketDto> {
-    return this.http.put<TicketDto>(`${this.baseUrl}/tech/${ticketId}/resolve`, {});
+    return this.http.put<TicketDto>(`${this.apiUrl}/tech/${ticketId}/resolve`, {});
   }
-  findTicketById(ticketId: number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.baseUrl}/user/findById/${ticketId}`);
-  } 
-  getAllTechnicians(): Observable<Technicien[]> {
-    return this.http.get<Technicien[]>(`${this.baseUrl}/admin/allTech`);
+
+  saveTicket(ticket: SaveTicketDto): Observable<Ticket> {
+    return this.http.post<Ticket>(`${this.apiUrl}/user/save`, ticket);
   }
 }

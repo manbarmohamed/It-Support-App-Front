@@ -10,9 +10,10 @@ import { AssignEquipmentComponent } from './component/core/equipement/assign-equ
 import { EquipmentFormComponent } from './component/core/equipement/equipment-form/equipment-form.component';
 import { PanneListComponent } from './component/core/panne/panne-list/panne-list.component';
 import { PanneFormComponent } from './component/core/panne/panne-form/panne-form.component';
+import { AddTicketComponent } from './component/core/ticket/add-ticket/add-ticket.component';
+import { ViewUserTicketsComponent } from './component/core/ticket/view-user-tickets/view-user-tickets.component';
+import { ViewTicketsByTechnicianComponent } from './component/core/ticket/view-tickets-by-technician/view-tickets-by-technician.component';
 import { TicketListComponent } from './component/core/ticket/ticket-list/ticket-list.component';
-import { TicketDetailComponent } from './component/core/ticket/ticket-detail/ticket-detail.component';
-import { TicketFormComponent } from './component/core/ticket/ticket-form/ticket-form.component';
 
 export const routes: Routes = [
  
@@ -38,22 +39,22 @@ export const routes: Routes = [
      // { path: '', redirectTo: '/login', pathMatch: 'full' },
 
   //    { path: '', redirectTo: '/equipment', pathMatch: 'full' },
-  // { path: 'equipment', component: EquipementListComponent },
+   { path: 'equipment', component: EquipementListComponent },
   // { path: 'add-equipment', component: EquipmentFormComponent },
   // { path: 'edit-equipment/:id', component: EquipmentFormComponent },
   // { path: 'assign-equipment', component: AssignEquipmentComponent },
 
 
-  // { path: 'pannes', component: PanneListComponent },
+  { path: 'pannes', component: PanneListComponent },
   // //{ path: 'panne/:id', component: PanneDetailComponent },
   // { path: 'edit-panne/:id', component: PanneFormComponent },
   // { path: 'create-panne', component: PanneFormComponent },
   // { path: '', redirectTo: '/pannes', pathMatch: 'full' },
 
 
-  { path: 'tickets', component: TicketListComponent },
-  { path: 'ticket/:id', component: TicketDetailComponent },
-  { path: 'create-ticket', component: TicketFormComponent },
-  { path: '', redirectTo: '/tickets', pathMatch: 'full' },
-  { path: '**', redirectTo: '/tickets' },
+  { path: 'list', component: TicketListComponent },
+  { path: 'view-tickets', component: ViewUserTicketsComponent },
+  { path: 'view-tickets-by-technician/:technicianId', component: ViewTicketsByTechnicianComponent },
+  { path: 'add-ticket', component: AddTicketComponent },
+  { path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
