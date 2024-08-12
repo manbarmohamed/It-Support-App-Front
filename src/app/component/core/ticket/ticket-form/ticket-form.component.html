@@ -1,0 +1,27 @@
+<p>ticket-form works!</p>
+
+
+<!-- src/app/components/ticket-form/ticket-form.component.html -->
+<h2>Create Ticket</h2>
+<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+  <label for="description">Description:</label>
+  <input id="description" formControlName="description" />
+  <div *ngIf="ticketForm.controls['description'].invalid && ticketForm.controls['description'].touched">
+    <small>Description is required.</small>
+  </div>
+
+  <label for="equipementId">Equipement ID:</label>
+  <input id="equipementId" formControlName="equipementId" />
+  <div *ngIf="ticketForm.controls['equipementId'].invalid && ticketForm.controls['equipementId'].touched">
+    <small>Equipement ID is required.</small>
+  </div>
+
+  <label for="panneId">Panne ID:</label>
+  <input id="panneId" formControlName="panneId" />
+  <div *ngIf="ticketForm.controls['panneId'].invalid && ticketForm.controls['panneId'].touched">
+    <small>Panne ID is required.</small>
+  </div>
+
+  <button type="submit">Create Ticket</button>
+</form>
+

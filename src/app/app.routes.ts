@@ -10,6 +10,9 @@ import { AssignEquipmentComponent } from './component/core/equipement/assign-equ
 import { EquipmentFormComponent } from './component/core/equipement/equipment-form/equipment-form.component';
 import { PanneListComponent } from './component/core/panne/panne-list/panne-list.component';
 import { PanneFormComponent } from './component/core/panne/panne-form/panne-form.component';
+import { TicketListComponent } from './component/core/ticket/ticket-list/ticket-list.component';
+import { TicketDetailComponent } from './component/core/ticket/ticket-detail/ticket-detail.component';
+import { TicketFormComponent } from './component/core/ticket/ticket-form/ticket-form.component';
 
 export const routes: Routes = [
  
@@ -41,9 +44,16 @@ export const routes: Routes = [
   // { path: 'assign-equipment', component: AssignEquipmentComponent },
 
 
-  { path: 'pannes', component: PanneListComponent },
-  //{ path: 'panne/:id', component: PanneDetailComponent },
-  { path: 'edit-panne/:id', component: PanneFormComponent },
-  { path: 'create-panne', component: PanneFormComponent },
-  { path: '', redirectTo: '/pannes', pathMatch: 'full' },
+  // { path: 'pannes', component: PanneListComponent },
+  // //{ path: 'panne/:id', component: PanneDetailComponent },
+  // { path: 'edit-panne/:id', component: PanneFormComponent },
+  // { path: 'create-panne', component: PanneFormComponent },
+  // { path: '', redirectTo: '/pannes', pathMatch: 'full' },
+
+
+  { path: 'tickets', component: TicketListComponent },
+  { path: 'ticket/:id', component: TicketDetailComponent },
+  { path: 'create-ticket', component: TicketFormComponent },
+  { path: '', redirectTo: '/tickets', pathMatch: 'full' },
+  { path: '**', redirectTo: '/tickets' },
 ];

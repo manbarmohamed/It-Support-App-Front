@@ -1,0 +1,32 @@
+<h2>Liste des Tickets</h2>
+<button (click)="navigateToCreateTicket()">Ajouter un Ticket</button>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Date de Création</th>
+      <th>Technicien</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticket of tickets">
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.description }}</td>
+      <td>{{ ticket.status }}</td>
+      <td>{{ ticket.dateCreation | date }}</td>
+      <td>
+        <select [(ngModel)]="selectedTechnicians[ticket.id]" (change)="assignToTechnician(ticket.id)">
+          <option *ngFor="let technicien of techniciens" [value]="technicien.id">
+            {{ technicien.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <button (click)="resolveTicket(ticket.id)">Résoudre</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
