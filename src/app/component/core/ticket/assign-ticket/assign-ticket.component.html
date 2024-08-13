@@ -1,0 +1,25 @@
+<h2>Assign Ticket to Technician</h2>
+
+<form [formGroup]="assignTicketForm" (ngSubmit)="assignTicket()">
+  <!-- Dropdown for selecting a ticket -->
+  <label for="ticket-select">Select Ticket:</label>
+  <select id="ticket-select" formControlName="ticketId">
+    <option *ngFor="let ticket of tickets" [value]="ticket.id">
+      Ticket #{{ ticket.id }} - {{ ticket.description }}
+    </option>
+  </select>
+
+  <!-- Dropdown for selecting a technician -->
+  <label for="technician-select">Select Technician:</label>
+  <select id="technician-select" formControlName="technicianId">
+    <option *ngFor="let technician of technicians" [value]="technician.id">
+      {{ technician.name }}
+    </option>
+  </select>
+
+  <!-- Button to trigger the assignment -->
+  <button type="submit">Assign</button>
+
+  <!-- Display message -->
+  <p>{{ message }}</p>
+</form>

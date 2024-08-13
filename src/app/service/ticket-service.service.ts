@@ -19,8 +19,12 @@ export class TicketServiceService {
     return this.http.get<Ticket[]>(`${this.apiUrl}/user/allTicket`);
   }
 
-  getTicketsByUserId(userId: number): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(`${this.apiUrl}/user/ticketByUserId/${userId}`);
+  getTicketsByUser(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/user/ticketByUser`);
+  }
+
+  getTicketsByTechnicien(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/tech/ticketByTechnician`);
   }
 
   assignTicketToTechnician(ticketId: number, technicianId: number): Observable<Ticket> {
@@ -33,5 +37,8 @@ export class TicketServiceService {
 
   saveTicket(ticket: SaveTicketDto): Observable<Ticket> {
     return this.http.post<Ticket>(`${this.apiUrl}/user/save`, ticket);
+  }
+  getAllTechnicians(): Observable<Technicien[]> {
+    return this.http.get<Technicien[]>(`${this.apiUrl}/admin/allTech`);
   }
 }

@@ -46,3 +46,16 @@
     </tr>
   </tbody>
 </table> -->
+
+
+<h2>User Tickets</h2>
+<ul>
+  <li *ngFor="let ticket of tickets">
+    <div>
+      <p>Description: {{ ticket.description }}</p>
+      <p>Status: {{ ticket.status }}</p>
+      <p>Equipement: {{ ticket.equipement.nome }}</p>
+      <p>Panne: {{ ticket.panne.nom }}</p>
+    </div>
+  </li>
+</ul>

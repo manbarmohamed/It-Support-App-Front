@@ -14,6 +14,7 @@ import { AddTicketComponent } from './component/core/ticket/add-ticket/add-ticke
 import { ViewUserTicketsComponent } from './component/core/ticket/view-user-tickets/view-user-tickets.component';
 import { ViewTicketsByTechnicianComponent } from './component/core/ticket/view-tickets-by-technician/view-tickets-by-technician.component';
 import { TicketListComponent } from './component/core/ticket/ticket-list/ticket-list.component';
+import { AssignTicketComponent } from './component/core/ticket/assign-ticket/assign-ticket.component';
 
 export const routes: Routes = [
  
@@ -53,6 +54,7 @@ export const routes: Routes = [
 
 
   { path: 'list', component: TicketListComponent },
+  { path: 'asign', component: AssignTicketComponent },
   { path: 'view-tickets', component: ViewUserTicketsComponent },
   { path: 'view-tickets-by-technician/:technicianId', component: ViewTicketsByTechnicianComponent },
   { path: 'add-ticket', component: AddTicketComponent },
