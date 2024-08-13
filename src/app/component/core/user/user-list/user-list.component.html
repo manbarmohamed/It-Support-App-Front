@@ -1,0 +1,22 @@
+<p>user-list works!</p>
+
+<div class="user-list">
+    <h2>User Management</h2>
+    <form [formGroup]="userForm" (ngSubmit)="addUser()">
+      <input formControlName="name" placeholder="Name" required />
+      <input formControlName="username" placeholder="Username" required />
+      <input formControlName="password" type="password" placeholder="Password" required />
+      <button type="submit">Add User</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let user of users">
+        {{ user.name }} - {{ user.username }}
+        <ul>
+          <li *ngFor="let ticket of user.tickets">
+            Ticket ID: {{ ticket.id }} - {{ ticket.description }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>

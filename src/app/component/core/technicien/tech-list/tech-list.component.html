@@ -1,0 +1,22 @@
+<p>tech-list works!</p>
+
+<div class="technician-list">
+    <h2>Technician Management</h2>
+    <form [formGroup]="technicianForm" (ngSubmit)="addTechnician()">
+      <input formControlName="name" placeholder="Name" required />
+      <input formControlName="username" placeholder="Username" required />
+      <input formControlName="password" type="password" placeholder="Password" required />
+      <button type="submit">Add Technician</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let technician of technicians">
+        {{ technician.name }} - {{ technician.username }}
+        <ul>
+          <li *ngFor="let ticket of technician.tickets">
+            Ticket ID: {{ ticket.id }} - {{ ticket.description }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
