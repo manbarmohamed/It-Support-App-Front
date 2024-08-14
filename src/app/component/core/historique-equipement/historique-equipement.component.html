@@ -1,0 +1,15 @@
+<h2>Historique Equipement</h2>
+    <form [formGroup]="equipementForm">
+      <select formControlName="equipementId" (change)="getHistorique()">
+        <option value="">Select an equipment</option>
+        <option *ngFor="let equip of equipements" [value]="equip.id">
+          {{ equip.nome }} (ID: {{ equip.id }})
+        </option>
+      </select>
+    </form>
+    <ul *ngIf="historique.length > 0">
+      <li *ngFor="let item of historique">
+        Panne ID: {{ item.panne.id }}, Equipement ID: {{ item.equipement.id }}
+      </li>
+    </ul>
+    <p *ngIf="historique.length === 0 && equipementForm.get('equipementId')?.value">No history available for this equipment.</p>>

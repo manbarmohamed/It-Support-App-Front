@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Technicien } from '../model/technicien';
 import { SaveTicketDto } from '../dto/save-ticket-dto';
 import { TicketDto } from '../dto/ticket-dto';
+import { Equipement } from '../model/equipement';
+import { Panne } from '../model/panne';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +43,10 @@ export class TicketServiceService {
   getAllTechnicians(): Observable<Technicien[]> {
     return this.http.get<Technicien[]>(`${this.apiUrl}/admin/allTech`);
   }
+  getAllPannes(): Observable<Panne[]> {
+    return this.http.get<Panne[]>(`${this.apiUrl}/admin/allPanne`);
+  }
+  getAllEquipments(): Observable<Equipement[]> {
+    return this.http.get<Equipement[]>(`${this.apiUrl}/admin/allEquipment`);
+  }   
 }

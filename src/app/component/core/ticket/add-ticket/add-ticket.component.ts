@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { TicketServiceService } from '../../../../service/ticket-service.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PanneServiceService } from '../../../../service/panne-service.service';
 import { SaveTicketDto } from '../../../../dto/save-ticket-dto';
 import { CommonModule, NgIf } from '@angular/common';
+import { Equipement } from '../../../../model/equipement';
+import { Panne } from '../../../../model/panne';
 
 
 @Component({
@@ -15,9 +16,11 @@ import { CommonModule, NgIf } from '@angular/common';
   templateUrl: './add-ticket.component.html',
   styleUrls: ['./add-ticket.component.css']
 })
-export class AddTicketComponent {
+export class AddTicketComponent implements OnInit{
   ticketForm: FormGroup;
 
+  pannes: Panne[] = [];
+  equipments: Equipement[] = [];
   constructor(private ticketService: TicketServiceService, private fb: FormBuilder) {
     this.ticketForm = this.fb.group({
       description: [''],
@@ -25,9 +28,36 @@ export class AddTicketComponent {
       equipement_id: [''],
     });
   }
+  ngOnInit(): void {
+   this.loadEquipments()
+   this.loadPannes()
+  }
 
+  loadPannes(): void {
+    this.ticketService.getAllPannes().subscribe(
+      (pannes) => {
+        this.pannes = pannes;
+      },
+      (error) => {
+        console.error('Error loading users', error);
+      }
+    );
+  }
+
+  loadEquipments(): void {
+    this.ticketService.getAllEquipments().subscribe(
+      (equipments) => {
+        this.equipments = equipments;
+      },
+      (error) => {
+        console.error('Error loading equipments', error);
+      }
+    );
+  }
   onSubmit() {
     const ticket: SaveTicketDto = this.ticketForm.value;
+    console.log(ticket);
+    
     this.ticketService.saveTicket(ticket).subscribe(
       (response) => {
         console.log('Ticket saved successfully', response);

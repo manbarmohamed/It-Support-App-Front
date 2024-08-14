@@ -1,50 +1,74 @@
-// src/app/components/assign-equipment/assign-equipment.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TicketServiceService } from '../../../../service/ticket-service.service'; // Remplacez par votre service réel
+import { Equipement } from '../../../../model/equipement';  // Assurez-vous que vous avez un modèle Equipement
+import { User } from '../../../../model/user';  // Assurez-vous que vous avez un modèle User
 import { EquipementServiceService } from '../../../../service/equipement-service.service';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { User } from '../../../../model/user';
+import { PersonService } from '../../../../service/person.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-assign-equipment',
-  standalone: true,
-  imports:[NgIf,NgFor,ReactiveFormsModule,CommonModule,RouterModule],
+  standalone:true,
+  imports:[ReactiveFormsModule,NgFor],
   templateUrl: './assign-equipment.component.html',
-  styleUrls: ['./assign-equipment.component.css'],
+  styleUrls: ['./assign-equipment.component.css']
 })
-export class AssignEquipmentComponent implements OnInit{
+export class AssignEquipmentComponent implements OnInit {
   assignForm: FormGroup;
+  equipments: Equipement[] = [];
   users: User[] = [];
-  equipmentId: number | null = null;
 
   constructor(
-    private fb: FormBuilder,
-    private equipmentService: EquipementServiceService,
-    private router: Router
-  ) {
+    private equipementService: EquipementServiceService,
+     private fb: FormBuilder,
+    private personService: PersonService
+    ) {
     this.assignForm = this.fb.group({
-      equipmentId: ['', [Validators.required, Validators.min(1)]],
-      userId: ['', [Validators.required, Validators.min(1)]],
+      equipment_id: [''],
+      user_id: ['']
     });
   }
-  ngOnInit(): void {
-    this.equipmentService.getAllUsers().subscribe((users) => {
-      this.users = users}
-  )}
 
-  onSubmit(): void {
-    if (this.assignForm.valid) {
-      const { equipmentId, userId } = this.assignForm.value;
-      this.equipmentService.assignEquipmentToUser(equipmentId, userId).subscribe(() => {
-        // Optionally handle success
-        this.router.navigate(['/equipment']);
-      });
-    }
+  ngOnInit(): void {
+    this.loadEquipments();
+    this.loadUsers();
   }
 
-  onEquipmentIdChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.equipmentId = parseInt(input.value, 10);
+  loadEquipments(): void {
+    this.equipementService.getAllEquipments().subscribe(
+      (equipments) => {
+        this.equipments = equipments;
+      },
+      (error) => {
+        console.error('Error loading equipments', error);
+      }
+    );
+  }
+
+  loadUsers(): void {
+    this.personService.getAllUsers().subscribe(
+      (users) => {
+        this.users = users;
+      },
+      (error) => {
+        console.error('Error loading users', error);
+      }
+    );
+  }
+
+  onSubmit() {
+    const equipmentId = this.assignForm.value.equipment_id;
+    const userId = this.assignForm.value.user_id;
+    
+    this.equipementService.assignEquipmentToUser(equipmentId, userId).subscribe(
+      (response) => {
+        console.log('Equipment assigned successfully', response);
+        this.assignForm.reset();
+      },
+      (error) => {
+        console.error('Error assigning equipment', error);
+      }
+    );
   }
 }

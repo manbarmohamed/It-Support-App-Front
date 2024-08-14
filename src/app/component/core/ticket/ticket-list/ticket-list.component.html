@@ -1,4 +1,4 @@
-<p>ticket-list works!</p>
+<!-- <p>ticket-list works!</p>
 
 <h2>Ticket List</h2>
 <ul>
@@ -6,8 +6,39 @@
     <div>
       <p>{{ ticket.description }}</p>
       <p>Status: {{ ticket.status }}</p>
-      <!-- Display the "Resolve" button only if the status is not COMPLETE -->
+      
       <button *ngIf="ticket.status.toString() !== 'COMPLETED'" (click)="resolveTicket(ticket.id)">Resolve</button>
     </div>
   </li>
-</ul>
+</ul> -->
+
+<div class="overflow-x-auto relative">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="py-3 px-6">
+                  Ticket Description
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Ticket Status
+              </th>
+              <th scope="col" class="py-3 px-6">
+               Action
+              </th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let ticket of tickets">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="py-4 px-6">
+                {{ ticket.description }}
+              </td>
+              <td class="py-4 px-6">
+                {{ ticket.status }}
+              </td>
+              <td class="py-4 px-6">
+                <button *ngIf="ticket.status.toString() !== 'COMPLETED'" (click)="resolveTicket(ticket.id)">Resolve</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

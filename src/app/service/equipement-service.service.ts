@@ -38,6 +38,6 @@ export class EquipementServiceService {
     return this.http.post<Equipement>(`${this.apiUrl}/assignEqToUser/${equipmentId}/${userId}`, {});
   }
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/allUsers`); // Ajustez le chemin selon votre API
+    return this.http.get<User[]>(`${this.apiUrl}/allUsers`);
   }
 }

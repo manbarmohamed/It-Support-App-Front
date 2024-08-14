@@ -1,0 +1,15 @@
+<p>panne-equipement works!</p>
+
+<h2>Signal Panne</h2>
+    <form [formGroup]="panneForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="panneId">Panne ID:</label>
+        <input type="number" id="panneId" formControlName="panneId">
+      </div>
+      <div>
+        <label for="equipementId">Equipement ID:</label>
+        <input type="number" id="equipementId" formControlName="equipementId">
+      </div>
+      <button type="submit" [disabled]="!panneForm.valid">Signal Panne</button>
+    </form>
+    <p *ngIf="message">{{ message }}</p>

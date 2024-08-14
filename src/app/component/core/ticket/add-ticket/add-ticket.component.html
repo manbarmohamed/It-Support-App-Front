@@ -1,4 +1,4 @@
-<p>ticket-form works!</p>
+<!-- <p>ticket-form works!</p>
 
 
 <h2>Create a New Ticket</h2>
@@ -18,4 +18,30 @@
   <button type="submit">Save Ticket</button>
 </form>
 
+ -->
+
+ <form class="max-w-sm mx-auto" [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+  <div class="mb-5">
+    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ticket Description</label>
+    <textarea id="description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Description" formControlName="description" required></textarea>
+  </div>
+
+  <div class="mb-5">
+    <label for="panne_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Panne</label>
+    <select type="text" id="panne_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="panne" formControlName="panne_id" required >
+      <option *ngFor="let panne of pannes" [value]="panne.id">{{ panne.nom }}</option>
+    </select>
+  </div>
+
+  <div class="mb-5">
+    <label for="equipement_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Equipement</label>
+    <select id="equipement_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" formControlName="equipement_id" required>
+      <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.nome }}</option>
+    </select>
+  </div>
+
+  
+
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add new Ticket</button>
+</form>
 

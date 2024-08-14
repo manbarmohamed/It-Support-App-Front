@@ -1,29 +1,40 @@
-<!-- src/app/components/equipment-list/equipment-list.component.html -->
-<h2>Liste des Équipements</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nom</th>
-      <th>Status</th>
-      <th>Actions</th>
-      <th>Assigner à un Utilisateur</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let equipment of equipments">
-      <td>{{ equipment.id }}</td>
-      <td>{{ equipment.nome }}</td>
-      <td>{{ equipment.status }}</td>
-      <td>
-        <button (click)="editEquipment(equipment.id)">Modifier</button>
-        <button (click)="deleteEquipment(equipment.id)">Supprimer</button>
-      </td>
-      <td>
-        <input #userIdInput type="number" placeholder="ID Utilisateur" />
-        <button (click)="assignEquipmentToUser(equipment.id, userIdInput.value)">Assigner</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="overflow-x-auto relative">
 <button (click)="addEquipment()">Ajouter un Équipement</button>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="py-3 px-6">
+                Nom
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Equipement Status
+              </th>
+              <th scope="col" class="py-3 px-6">
+               Action
+              </th>
+              <th scope="col" class="py-3 px-6">
+               Assigner
+              </th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let equipment of equipments">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="py-4 px-6">
+                {{ equipment.nome }}
+              </td>
+              <td class="py-4 px-6">
+                {{ equipment.status }}
+              </td>
+              <td class="py-4 px-6">
+                <button (click)="editEquipment(equipment.id)">Modifier</button>
+                <button (click)="deleteEquipment(equipment.id)">Supprimer</button>
+              </td>
+              <td class="py-4 px-6">
+                <input #userIdInput type="number" placeholder="ID Utilisateur" />
+                <button (click)="assignEquipmentToUser(equipment.id, userIdInput.value)">Assigner</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
