@@ -19,56 +19,59 @@ import { UserListComponent } from './component/core/user/user-list/user-list.com
 import { TechListComponent } from './component/core/technicien/tech-list/tech-list.component';
 import { HistoriqueEquipementComponent } from './component/core/historique-equipement/historique-equipement.component';
 import { PanneEquipementComponent } from './component/core/panne-equipement/panne-equipement.component';
+import { RegisterUserComponent } from './component/core/user/register-user/register-user.component';
 
 export const routes: Routes = [
  
-  //   { 
-  //       path: 'admin', 
-  //       component: AdminDashboardComponent, 
-  //       canActivate: [authGuard], 
-  //       data: { roles: Role[Role.ADMIN] } 
-  //     },
-  //     { 
-  //       path: 'tech-dashboard', 
-  //       component: TechDashboardComponent, 
-  //       canActivate: [authGuard], 
-  //       data: { roles: Role[Role.TECH] } 
-  //     },
-  //     { 
-  //       path: 'user-dashboard', 
-  //       component: UserDashboardComponent, 
-  //       canActivate: [authGuard], 
-  //       data: { roles: Role[Role.USER] } 
-  //     },
-  //      { path: 'login', component: LoginComponent },
-  // //    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { 
+        path: 'admin', 
+        component: AdminDashboardComponent, 
+        canActivate: [authGuard], 
+        data: { roles: Role[Role.ADMIN] } 
+      },
+      { 
+        path: 'tech-dashboard', 
+        component: TechDashboardComponent, 
+        canActivate: [authGuard], 
+        data: { roles: Role[Role.TECH] } 
+      },
+      { 
+        path: 'user-dashboard', 
+        component: UserDashboardComponent, 
+        canActivate: [authGuard], 
+        data: { roles: Role[Role.USER] } 
+      },
+       { path: 'login', component: LoginComponent },
+  //    { path: '', redirectTo: '/login', pathMatch: 'full' },
 
-  // //    { path: '', redirectTo: '/equipment', pathMatch: 'full' },
-  //   { path: 'equipment', component: EquipementListComponent },
-  //  { path: 'add-equipment', component: EquipmentFormComponent },
-  //  { path: 'edit-equipment/:id', component: EquipmentFormComponent },
-  // { path: 'assign-equipment', component: AssignEquipmentComponent },
-
-
-  // { path: 'pannes', component: PanneListComponent },
-  // // //{ path: 'panne/:id', component: PanneDetailComponent },
-  // // { path: 'edit-panne/:id', component: PanneFormComponent },
-  // // { path: 'create-panne', component: PanneFormComponent },
-  // // { path: '', redirectTo: '/pannes', pathMatch: 'full' },
+  //    { path: '', redirectTo: '/equipment', pathMatch: 'full' },
+    { path: 'equipment', component: EquipementListComponent },
+   { path: 'add-equipment', component: EquipmentFormComponent },
+   { path: 'edit-equipment/:id', component: EquipmentFormComponent },
+  { path: 'assign-equipment', component: AssignEquipmentComponent },
 
 
-  //  { path: 'list', component: TicketListComponent },
-  //  { path: 'asign', component: AssignTicketComponent },
-  // // { path: 'view-tickets', component: ViewUserTicketsComponent },
-  // // { path: 'view-tickets-by-technician/:technicianId', component: ViewTicketsByTechnicianComponent },
-  //  { path: 'add-ticket', component: AddTicketComponent },
-  // // { path: '', redirectTo: '/list', pathMatch: 'full'}
+  { path: 'pannes', component: PanneListComponent },
+  // //{ path: 'panne/:id', component: PanneDetailComponent },
+  // { path: 'edit-panne/:id', component: PanneFormComponent },
+  // { path: 'create-panne', component: PanneFormComponent },
+  // { path: '', redirectTo: '/pannes', pathMatch: 'full' },
 
-  // { path: 'admin', component: AdminDashboardComponent },
-  // { path: 'users', component: UserListComponent },
-  // { path: 'technicians', component: TechListComponent },
-  // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to users by default
-  // { path: '**', redirectTo: '/login' },
+
+   { path: 'list', component: TicketListComponent },
+   { path: 'asign', component: AssignTicketComponent },
+  // { path: 'view-tickets', component: ViewUserTicketsComponent },
+  // { path: 'view-tickets-by-technician/:technicianId', component: ViewTicketsByTechnicianComponent },
+   { path: 'add-ticket', component: AddTicketComponent },
+  // { path: '', redirectTo: '/list', pathMatch: 'full'}
+
+
+  { path: 'add-user', component: RegisterUserComponent },
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'technicians', component: TechListComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to users by default
+  { path: '**', redirectTo: '/login' },
 
   { path: 'signal-panne', component: PanneEquipementComponent },
   { path: 'historique-equipement', component: HistoriqueEquipementComponent },

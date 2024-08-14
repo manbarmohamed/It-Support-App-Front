@@ -1,4 +1,4 @@
-<form class="max-w-sm mx-auto" [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+<!-- <form class="max-w-sm mx-auto" [formGroup]="assignForm" (ngSubmit)="onSubmit()">
   <div class="mb-5">
     <label for="equipment_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Équipement</label>
     <select id="equipment_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" formControlName="equipment_id" required>
@@ -14,4 +14,40 @@
   </div>
 
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Assigner l'Équipement</button>
-</form>
+</form> -->
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <a href="/home" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <img class="w-8 h-8 mr-2" src="https://i.ibb.co/B35n9gh/5269970.png" alt="logo">
+      Support It    
+    </a>
+    <div class="w-full max-w-xs sm:max-w-sm bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Assigner Equipement To User
+        </h1>
+        <form class="max-w-sm mx-auto" [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+          <div class="mb-5">
+            <label for="equipment_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Équipement</label>
+            <select id="equipment_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" formControlName="equipment_id" required>
+              <option *ngFor="let equipment of equipments" [value]="equipment.id">{{ equipment.nome }}</option>
+            </select>
+          </div>
+        
+          <div class="mb-5">
+            <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Utilisateur</label>
+            <select id="user_id" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" formControlName="user_id" required>
+              <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+            </select>
+          </div>
+        
+          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Assigner l'Équipement</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

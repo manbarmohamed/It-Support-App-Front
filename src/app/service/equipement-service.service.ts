@@ -17,6 +17,9 @@ export class EquipementServiceService {
   getAllEquipments(): Observable<Equipement[]> {
     return this.http.get<Equipement[]>(`${this.apiUrl}/allEquipment`);
   }
+  getAvailableEquipments(): Observable<Equipement[]> {
+    return this.http.get<Equipement[]>(`${this.apiUrl}/available`);
+  }
 
   getEquipmentById(id: number): Observable<Equipement> {
     return this.http.get<Equipement>(`${this.apiUrl}/getEquipmentById/${id}`);

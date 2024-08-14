@@ -6,11 +6,13 @@ import { User } from '../../../../model/user';  // Assurez-vous que vous avez un
 import { EquipementServiceService } from '../../../../service/equipement-service.service';
 import { PersonService } from '../../../../service/person.service';
 import { NgFor } from '@angular/common';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-assign-equipment',
   standalone:true,
-  imports:[ReactiveFormsModule,NgFor],
+  imports: [ReactiveFormsModule, NgFor, NavbarComponent, SidebarComponent],
   templateUrl: './assign-equipment.component.html',
   styleUrls: ['./assign-equipment.component.css']
 })
@@ -36,7 +38,7 @@ export class AssignEquipmentComponent implements OnInit {
   }
 
   loadEquipments(): void {
-    this.equipementService.getAllEquipments().subscribe(
+    this.equipementService.getAvailableEquipments().subscribe(
       (equipments) => {
         this.equipments = equipments;
       },

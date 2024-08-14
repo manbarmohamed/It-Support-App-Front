@@ -5,11 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { EquipementDto } from '../../../../dto/equipement-dto';
 import { NgIf } from '@angular/common';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-equipment-form',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule, NgIf, NavbarComponent, SidebarComponent],
   templateUrl: './equipment-form.component.html',
   styleUrl: './equipment-form.component.css'
 })

@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import { EquipementDto } from '../../../../dto/equipement-dto';
 import { EquipementServiceService } from '../../../../service/equipement-service.service';
 import { Router } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Equipement } from '../../../../model/equipement';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-equipement-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,NgIf, NgClass, NavbarComponent, SidebarComponent],
   templateUrl: './equipement-list.component.html',
   styleUrl: './equipement-list.component.css'
 })
@@ -40,6 +42,9 @@ export class EquipementListComponent {
 
   addEquipment(): void {
     this.router.navigate(['/add-equipment']);
+  }
+  assignerEquipment(): void {
+    this.router.navigate(['/assign-equipment']);
   }
 
   assignEquipmentToUser(equipmentId: number, userId: string): void {

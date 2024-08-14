@@ -26,7 +26,7 @@ export class LoginComponent {
         if (user) {
           switch (user.role?.toString()) {
             case Role[Role.ADMIN]:
-              this.router.navigate(['/admin-dashboard']);
+              this.router.navigate(['/admin']);
               break;
             case Role[Role.TECH]:
               this.router.navigate(['/tech-dashboard']);

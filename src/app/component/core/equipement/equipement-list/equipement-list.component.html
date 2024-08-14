@@ -1,5 +1,6 @@
-
-<div class="overflow-x-auto relative">
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<!-- <div class="overflow-x-auto relative">
 <button (click)="addEquipment()">Ajouter un Équipement</button>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -37,4 +38,72 @@
           </tr>
       </tbody>
   </table>
-</div>
+</div> -->
+
+
+
+
+<main class="p-0 sm:ml-64 mt-8">
+  <div class="p-4 border-2 border-gray-200 rounded-lg bg-white text-gray-900">
+    <body class="bg-gray-100 p-8 min-h-screen">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">Equipment List</h2>
+  
+        <!-- Add Button -->
+        <div class="mb-4">
+          <button (click)="addEquipment()" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+            Ajouter
+          </button>
+        </div>
+  
+        <div class="overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="min-w-full bg-white text-gray-900">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Name
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Status
+                </th>
+                <th class="relative px-6 py-3">
+                  <span class="sr-only">Actions</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let equipment of equipments">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {{ equipment.nome }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span [ngClass]="{
+                    'px-2 inline-flex text-xs leading-5 font-semibold rounded-full': true,
+                    'bg-green-100 text-green-800': equipment.status.toString() === 'ACTIVE',
+                    'bg-yellow-100 text-yellow-800': equipment.status.toString() === 'AVAILABLE',
+                    'bg-orange-100 text-orange-800': equipment.status.toString() === 'PANE',
+                    'bg-red-100 text-red-800': equipment.status.toString() === 'INACTIVE'
+                    }">
+                    {{ equipment.status }}
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button (click)="editEquipment(equipment.id)" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center mr-2 mb-2">
+                    Edit
+                  </button>
+                  <button (click)="deleteEquipment(equipment.id)" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center mr-2 mb-2">
+                    Delete
+                  </button>
+
+                  <button  *ngIf="equipment.status.toString()==='AVAILABLE'" (click)="assignerEquipment()" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center mr-2 mb-2">
+                    Assigner
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+  </div>
+</main>

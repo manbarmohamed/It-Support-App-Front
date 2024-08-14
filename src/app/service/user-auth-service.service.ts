@@ -39,4 +39,11 @@ export class UserAuthServiceService {
   get currentUserValue(): User | null {
     return this.currentUserSubject.value;
   }
+
+  getUserRole(): Role | undefined {
+  const user = this.currentUserValue;
+  return user ? user.role : undefined;
+}
+
+  
 }
