@@ -9,25 +9,25 @@ import { Panne } from '../model/panne';
   providedIn: 'root',
 })
 export class PanneServiceService {
-  private apiUrl = 'http://localhost:8000/admin'; // URL de l'API pour les pannes
+  private apiUrl = 'http://localhost:8000/'; // URL de l'API pour les pannes
 
   constructor(private http: HttpClient) {}
 
   createPanne(panneDto: PanneDto): Observable<PanneDto> {
-    return this.http.post<PanneDto>(`${this.apiUrl}/savePanne`, panneDto);
+    return this.http.post<PanneDto>(`${this.apiUrl}admin/savePanne`, panneDto);
   }
 
   updatePanne(id: number, panneDto: PanneDto): Observable<PanneDto> {
-    return this.http.put<PanneDto>(`${this.apiUrl}/editPanne/${id}`, panneDto);
+    return this.http.put<PanneDto>(`${this.apiUrl}admin/editPanne/${id}`, panneDto);
   }
 
   getAllPannes(): Observable<Panne[]> {
-    return this.http.get<Panne[]>(`${this.apiUrl}/allPanne`);
+    return this.http.get<Panne[]>(`${this.apiUrl}public/allPanne`);
   }
   getPanneById(id: number): Observable<PanneDto> {
-    return this.http.get<PanneDto>(`${this.apiUrl}/getById/${id}`);
+    return this.http.get<PanneDto>(`${this.apiUrl}admin/getById/${id}`);
   }
   deletePanne(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delPanne/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}admin/delPanne/${id}`);
   }
 }

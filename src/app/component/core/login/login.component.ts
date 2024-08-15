@@ -35,7 +35,7 @@ export class LoginComponent {
               this.router.navigate(['/user-dashboard']);
               break;
               default:
-                this.router.navigate(['/user-dashboard']);
+                this.router.navigate(['/login']);
                 break;
           }
         }

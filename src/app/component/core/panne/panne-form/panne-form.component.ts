@@ -5,11 +5,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PanneDto } from '../../../../dto/panne-dto';
 import { PanneServiceService } from '../../../../service/panne-service.service';
 import { CommonModule, NgIf } from '@angular/common';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-panne-form',
   standalone: true,
-  imports:[NgIf,ReactiveFormsModule,CommonModule],
+  imports: [NgIf, ReactiveFormsModule, CommonModule, NavbarComponent, SidebarComponent],
   templateUrl: './panne-form.component.html',
   styleUrls: ['./panne-form.component.css'],
 })

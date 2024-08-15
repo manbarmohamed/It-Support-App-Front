@@ -20,6 +20,8 @@ import { TechListComponent } from './component/core/technicien/tech-list/tech-li
 import { HistoriqueEquipementComponent } from './component/core/historique-equipement/historique-equipement.component';
 import { PanneEquipementComponent } from './component/core/panne-equipement/panne-equipement.component';
 import { RegisterUserComponent } from './component/core/user/register-user/register-user.component';
+import { RegisterTechComponent } from './component/core/technicien/register-tech/register-tech.component';
+import { UserEquipementComponent } from './component/core/equipement/user-equipement/user-equipement.component';
 
 export const routes: Routes = [
  
@@ -42,37 +44,38 @@ export const routes: Routes = [
         data: { roles: Role[Role.USER] } 
       },
        { path: 'login', component: LoginComponent },
-  //    { path: '', redirectTo: '/login', pathMatch: 'full' },
 
-  //    { path: '', redirectTo: '/equipment', pathMatch: 'full' },
-    { path: 'equipment', component: EquipementListComponent },
-   { path: 'add-equipment', component: EquipmentFormComponent },
-   { path: 'edit-equipment/:id', component: EquipmentFormComponent },
-  { path: 'assign-equipment', component: AssignEquipmentComponent },
+    { path: 'equipment', component: EquipementListComponent,canActivate: [authGuard] },
+   { path: 'add-equipment', component: EquipmentFormComponent ,canActivate: [authGuard]},
+   { path: 'edit-equipment/:id', component: EquipmentFormComponent ,canActivate: [authGuard]},
+  { path: 'assign-equipment', component: AssignEquipmentComponent ,canActivate: [authGuard]},
 
 
-  { path: 'pannes', component: PanneListComponent },
+  { path: 'pannes', component: PanneListComponent,canActivate: [authGuard] },
   // //{ path: 'panne/:id', component: PanneDetailComponent },
-  // { path: 'edit-panne/:id', component: PanneFormComponent },
-  // { path: 'create-panne', component: PanneFormComponent },
+   { path: 'edit-panne/:id', component: PanneFormComponent,canActivate: [authGuard] },
+{ path: 'create-panne', component: PanneFormComponent ,canActivate: [authGuard]},
   // { path: '', redirectTo: '/pannes', pathMatch: 'full' },
 
 
-   { path: 'list', component: TicketListComponent },
-   { path: 'asign', component: AssignTicketComponent },
-  // { path: 'view-tickets', component: ViewUserTicketsComponent },
-  // { path: 'view-tickets-by-technician/:technicianId', component: ViewTicketsByTechnicianComponent },
-   { path: 'add-ticket', component: AddTicketComponent },
+   { path: 'list', component: TicketListComponent ,canActivate: [authGuard]},
+   { path: 'asign', component: AssignTicketComponent ,canActivate: [authGuard]},
+   { path: 'view-tickets', component: ViewUserTicketsComponent ,canActivate: [authGuard]},
+  { path: 'view-tickets-by-technician', component: ViewTicketsByTechnicianComponent ,canActivate: [authGuard]},
+   { path: 'add-ticket', component: AddTicketComponent ,canActivate: [authGuard]},
+   { path: 'add-tech', component: RegisterTechComponent ,canActivate: [authGuard]},
   // { path: '', redirectTo: '/list', pathMatch: 'full'}
 
+{ path: 'signal-panne', component: PanneEquipementComponent ,canActivate: [authGuard]},
+  { path: 'histo', component: HistoriqueEquipementComponent ,canActivate: [authGuard]},
+  { path: 'user-eq', component: UserEquipementComponent ,canActivate: [authGuard]},
 
-  { path: 'add-user', component: RegisterUserComponent },
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'technicians', component: TechListComponent },
+  { path: 'add-user', component: RegisterUserComponent ,canActivate: [authGuard]},
+  { path: 'admin', component: AdminDashboardComponent ,canActivate: [authGuard]},
+  { path: 'users', component: UserListComponent ,canActivate: [authGuard]},
+  { path: 'technicians', component: TechListComponent ,canActivate: [authGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to users by default
   { path: '**', redirectTo: '/login' },
 
-  { path: 'signal-panne', component: PanneEquipementComponent },
-  { path: 'historique-equipement', component: HistoriqueEquipementComponent },
+  
 ];

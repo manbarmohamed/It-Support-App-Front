@@ -4,11 +4,13 @@ import { Technicien } from '../../../../model/technicien';
 import { TicketServiceService } from '../../../../service/ticket-service.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { FormBuilder, FormGroup, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-assign-ticket',
   standalone: true,
-  imports: [NgFor,ReactiveFormsModule],
+  imports: [NgFor, ReactiveFormsModule, SidebarComponent, NavbarComponent],
   templateUrl: './assign-ticket.component.html',
   styleUrl: './assign-ticket.component.css'
 })

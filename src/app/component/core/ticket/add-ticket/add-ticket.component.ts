@@ -7,12 +7,14 @@ import { SaveTicketDto } from '../../../../dto/save-ticket-dto';
 import { CommonModule, NgIf } from '@angular/common';
 import { Equipement } from '../../../../model/equipement';
 import { Panne } from '../../../../model/panne';
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 
 
 @Component({
   standalone: true,
   selector: 'app-add-ticket',
-  imports:[ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, SidebarComponent, NavbarComponent],
   templateUrl: './add-ticket.component.html',
   styleUrls: ['./add-ticket.component.css']
 })
@@ -21,7 +23,9 @@ export class AddTicketComponent implements OnInit{
 
   pannes: Panne[] = [];
   equipments: Equipement[] = [];
-  constructor(private ticketService: TicketServiceService, private fb: FormBuilder) {
+  constructor(private ticketService: TicketServiceService, 
+    private fb: FormBuilder,
+  private router:Router) {
     this.ticketForm = this.fb.group({
       description: [''],
       panne_id: [''],
@@ -62,6 +66,8 @@ export class AddTicketComponent implements OnInit{
       (response) => {
         console.log('Ticket saved successfully', response);
         this.ticketForm.reset();
+        alert('Ticket ajouter avec succès!');
+          this.router.navigate(['/view-tickets']);
       },
       (error) => {
         console.error('Error saving ticket', error);

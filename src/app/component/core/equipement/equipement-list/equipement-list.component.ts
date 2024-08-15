@@ -8,11 +8,12 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { StateComponent } from "../../../shared/state/state.component";
 
 @Component({
   selector: 'app-equipement-list',
   standalone: true,
-  imports: [NgFor,NgIf, NgClass, NavbarComponent, SidebarComponent],
+  imports: [NgFor, NgIf, NgClass, NavbarComponent, SidebarComponent, StateComponent],
   templateUrl: './equipement-list.component.html',
   styleUrl: './equipement-list.component.css'
 })

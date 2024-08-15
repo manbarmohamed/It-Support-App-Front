@@ -8,6 +8,7 @@ import { PersonService } from '../../../../service/person.service';
 import { NgFor } from '@angular/common';
 import { NavbarComponent } from "../../../shared/navbar/navbar.component";
 import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assign-equipment',
@@ -24,7 +25,8 @@ export class AssignEquipmentComponent implements OnInit {
   constructor(
     private equipementService: EquipementServiceService,
      private fb: FormBuilder,
-    private personService: PersonService
+    private personService: PersonService,
+    private router: Router
     ) {
     this.assignForm = this.fb.group({
       equipment_id: [''],
@@ -64,8 +66,9 @@ export class AssignEquipmentComponent implements OnInit {
     const userId = this.assignForm.value.user_id;
     
     this.equipementService.assignEquipmentToUser(equipmentId, userId).subscribe(
-      (response) => {
-        console.log('Equipment assigned successfully', response);
+      () => {
+        alert('Équipement assigner avec succès!');
+          this.router.navigate(['/equipment']);
         this.assignForm.reset();
       },
       (error) => {

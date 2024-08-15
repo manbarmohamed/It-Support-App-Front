@@ -1,5 +1,5 @@
 <!-- src/app/components/panne-list/panne-list.component.html -->
-<h2>Liste des Pannes</h2>
+<!-- <h2>Liste des Pannes</h2>
 <button (click)="createPanne()">Créer Nouvelle Panne</button>
 <table>
   <thead>
@@ -18,4 +18,64 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+
+<app-navbar></app-navbar>
+
+<app-sidebar></app-sidebar>
+
+
+
+
+
+<main class="p-4 sm:ml-64 mt-8">
+  <div class="p-4 border-2 border-gray-200 rounded-lg bg-white text-gray-900">
+    <body class="bg-gray-100 p-8 min-h-screen">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">Panne List</h2>
+  
+        <!-- Add Button -->
+        <div class="mb-4">
+          <button (click)="createPanne()" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+            Ajouter Nouveau Panne
+          </button>
+        </div>
+  
+        <div class="overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="min-w-full bg-white text-gray-900 center">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Name
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  Action
+                </th>
+              
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let panne of pannes">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {{ panne.nom }}
+                </td>
+                
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button (click)="editPanne(panne.id)" class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center mr-2 mb-2">
+                    Edit
+                  </button>
+                  <button (click)="deletePanne(panne.id)" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center mr-2 mb-2">
+                    Delete
+                  </button>
+               
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+  </div>
+</main>
+

@@ -3,11 +3,14 @@ import { User } from '../../../../model/user';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PersonService } from '../../../../service/person.service';
 import { NgFor } from '@angular/common';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [ReactiveFormsModule,NgFor],
+  imports: [ReactiveFormsModule, NgFor, NavbarComponent, SidebarComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
@@ -16,7 +19,7 @@ export class UserListComponent implements OnInit {
   userForm: FormGroup;
   
 
-  constructor(private personService: PersonService, private fb: FormBuilder) {
+  constructor(private personService: PersonService, private fb: FormBuilder, private router: Router) {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
@@ -36,32 +39,5 @@ export class UserListComponent implements OnInit {
   }
 
   addUser() {
-    if (this.userForm.valid) {
-      const userValues=this.userForm.value
-      console.log(userValues);
-      // const user :User={
-      //   id: 0,
-      //   name: '',
-      //   username:'',
-      //   password:'',
-      //   equipements: [],
-      //   tickets: [],
-      //   role:undefined
-      // }
-
-      // user.name=userValues.name;
-      // user.username=userValues.username;
-      // user.password=userValues.password;
-      
-
-      this.personService.addUser(userValues).subscribe(
-        (user) => {
-          this.users.push(user);
-          this.userForm.reset();
-        },
-        (error) => console.error('Error adding user', error)
-      );
-      console.log(userValues.password+"  "+"   paaaaasssssssssss");
-      
-    }
+    this.router.navigate(['add-user'])
   }}

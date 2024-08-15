@@ -18,4 +18,8 @@ export class PanneEquipementService {
   getHistorique(id: number): Observable<PanneEquipement[]> {
     return this.http.get<PanneEquipement[]>(`${this.baseUrl}/admin/historique/${id}`);
   }
+
+  getByUser():Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl}/user/ByUser`)
+  }
 }

@@ -5,11 +5,13 @@ import { PanneDto } from '../../../../dto/panne-dto';
 import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Panne } from '../../../../model/panne';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-panne-list',
   standalone: true,
-  imports:[NgFor,RouterLink],
+  imports: [NgFor, RouterLink, NavbarComponent, SidebarComponent],
   templateUrl: './panne-list.component.html',
   styleUrls: ['./panne-list.component.css'],
 })

@@ -3,11 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Technicien } from '../../../../model/technicien';
 import { PersonService } from '../../../../service/person.service';
+import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../../shared/sidebar/sidebar.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tech-list',
   standalone: true,
-  imports: [ReactiveFormsModule,NgFor],
+  imports: [ReactiveFormsModule, NgFor, NavbarComponent, SidebarComponent],
   templateUrl: './tech-list.component.html',
   styleUrl: './tech-list.component.css'
 })
@@ -15,7 +18,7 @@ export class TechListComponent implements OnInit{
   technicians: Technicien[] = [];
   technicianForm: FormGroup;
   
-  constructor(private personService: PersonService, private fb: FormBuilder) {
+  constructor(private personService: PersonService, private fb: FormBuilder,private router:Router) {
     this.technicianForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
@@ -35,14 +38,8 @@ export class TechListComponent implements OnInit{
   }
 
   addTechnician() {
-    if (this.technicianForm.valid) {
-      this.personService.addTechnician(this.technicianForm.value).subscribe(
-        (technician) => {
-          this.technicians.push(technician);
-          this.technicianForm.reset();
-        },
-        (error) => console.error('Error adding technician', error)
-      );
+    
+      this.router.navigate(['add-tech'])
     }
   }
-}
+

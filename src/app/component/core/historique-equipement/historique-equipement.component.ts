@@ -5,11 +5,13 @@ import { Equipement } from '../../../model/equipement';
 import { PanneEquipement } from '../../../model/panne-equipement';
 import { PanneEquipementService } from '../../../service/panne-equipement.service';
 import { EquipementServiceService } from '../../../service/equipement-service.service';
+import { NavbarComponent } from "../../shared/navbar/navbar.component";
+import { SidebarComponent } from "../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-historique-equipement',
   standalone: true,
-  imports: [ReactiveFormsModule,NgFor,NgIf],
+  imports: [ReactiveFormsModule, NgFor, NgIf, NavbarComponent, SidebarComponent],
   templateUrl: './historique-equipement.component.html',
   styleUrl: './historique-equipement.component.css'
 })
